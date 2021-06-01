@@ -25,5 +25,26 @@ window.addEventListener('DOMContentLoaded', function (){
 
     }
     createCard()
-    openBtn.
+
+    let cart = document.querySelector('.cart'),
+        closeBtn = document.querySelector('.close'),
+        field = document.querySelector('.cart-field')
+
+    openBtn.addEventListener('click',  () => {
+        cart.style.display = 'block'
+    })
+    closeBtn.addEventListener('click',  () => {
+        cart.style.display = 'none'
+    })
+
+    buttons.forEach( (item, i) =>{
+        item.addEventListener('click',  () => {
+            let cloneItem = products[i].cloneNode(true),
+                btn = cloneItem.querySelector('button');
+
+            btn.remove()
+            field.appendChild(cloneItem)
+            products[i].remove()
+        })
+    })
 })
